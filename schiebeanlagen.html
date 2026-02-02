@@ -1,0 +1,1486 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Palace Garden - Terrasoverkappingen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Basic Reset & Global Styles usually handled by theme */
+        body { margin: 0; padding: 0; font-family: 'Open Sans', sans-serif; color: #333; }
+        * { box-sizing: border-box; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; }
+        
+        /* Utility classes often used */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    </style>
+</head>
+<body>
+
+
+<style>
+    /* =====================================================
+       GLOBAL FONTS & COLORS
+       ===================================================== */
+    :root {
+        --font-primary: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        --color-bg-mint: rgb(237, 246, 238);
+        --color-text-dark: rgb(15, 23, 42);
+        --color-text-muted: rgba(15, 23, 42, 0.7);
+        --color-accent: rgb(76, 109, 116);
+    }
+
+    .schuif-page {
+        font-family: var(--font-primary);
+        color: var(--color-text-dark);
+        line-height: 1.6;
+        background-color: #ffffff;
+        overflow-x: hidden;
+    }
+
+    .schuif-page h1,
+    .schuif-page h2,
+    .schuif-page h3,
+    .schuif-page strong,
+    .schuif-page .btn {
+        font-family: var(--font-primary) !important;
+    }
+
+    .container {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    /* =====================================================
+       HERO SECTION
+       ===================================================== */
+    .schuif-hero {
+        padding: 80px 0;
+        background-color: var(--color-bg-mint);
+        /* The reference has this minty background for the top section */
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    /* Badge */
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 16px;
+        background-color: rgba(76, 109, 116, 0.1);
+        color: var(--color-accent);
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-radius: 99px;
+        margin-bottom: 24px;
+    }
+
+    /* Headings */
+    .hero-content h1 {
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 24px 0;
+        color: var(--color-text-dark);
+        text-transform: uppercase;
+    }
+
+    .hero-content .lead {
+        font-size: 18px;
+        color: var(--color-text-muted);
+        margin-bottom: 32px;
+        max-width: 540px;
+    }
+
+    /* Hero Checkmarks */
+    .hero-checks {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+
+    .check-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 600;
+        color: var(--color-text-dark);
+    }
+
+    .check-icon {
+        width: 24px;
+        height: 24px;
+        background-color: var(--color-accent);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    /* Buttons */
+    .cta-group {
+        display: flex;
+        gap: 16px;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 32px;
+        border-radius: 99px; /* Rounded pill style */
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+    }
+
+    .btn-primary {
+        background-color: var(--color-text-dark);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #2c3e50;
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        border: 2px solid rgba(15, 23, 42, 0.1);
+        color: var(--color-text-dark);
+    }
+
+    .btn-secondary:hover {
+        border-color: var(--color-text-dark);
+        background-color: transparent;
+    }
+
+    /* Hero Image */
+    .hero-image-wrapper {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        /* Box shadow matching reference */
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-image-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+
+    /* =====================================================
+       PRODUCTKENMERKEN (FEATURES) SECTION
+       ===================================================== */
+    .features-section {
+        padding: 100px 0;
+        background-color: #fff;
+    }
+
+    /* Container Box style from Reference (Light Background Wrapper) */
+    .kenmerken-wrapper {
+        background-color: rgba(76, 109, 116, 0.06);
+        border: 1px solid rgba(76, 109, 116, 0.18);
+        border-radius: 16px;
+        padding: 40px;
+    }
+
+    .features-content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+    }
+
+    .features-text h2 {
+        font-size: 28px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        color: var(--color-text-dark);
+        line-height: 1.2;
+    }
+
+    .features-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* Individual Feature Card */
+    .feature-item {
+        background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+        border: 1px solid rgba(15, 23, 42, 0.05);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 0;
+        transition: all 0.2s;
+    }
+
+    .feature-item:hover {
+        background-color: #fff;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        transform: translateX(4px);
+    }
+
+    .feature-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+    }
+
+    .feature-icon {
+        color: var(--color-accent);
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+
+    .feature-title {
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--color-text-dark);
+    }
+
+    .feature-desc {
+        padding-left: 32px; /* Indent to align with text start */
+        font-size: 15px;
+        color: var(--color-text-muted);
+        margin: 0;
+    }
+
+    /* =====================================================
+       ENGINEERING / TECHNICAL SECTION
+       ===================================================== */
+    .tech-section {
+        padding: 100px 0;
+        background-color: var(--color-bg-mint);
+    }
+
+    .tech-title {
+        font-size: 32px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        margin-top: 0;
+    }
+
+    .tech-intro {
+        font-size: 18px;
+        color: var(--color-text-muted);
+        margin-bottom: 40px;
+        max-width: 600px;
+    }
+
+    .tech-points {
+        display: grid;
+        gap: 30px;
+    }
+
+    .tech-point h4 {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tech-point p {
+        font-size: 16px;
+        color: var(--color-text-muted);
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    /* =====================================================
+       MEDIA QUERIES
+       ===================================================== */
+    @media (max-width: 900px) {
+        .hero-grid,
+        .features-content-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .schuif-hero {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .hero-badge {
+            margin: 0 auto 24px auto;
+        }
+
+        .hero-content h1 {
+            font-size: 36px;
+        }
+
+        .hero-content .lead {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-checks {
+            align-items: center; /* Center check items */
+        }
+
+        .cta-group {
+            justify-content: center;
+        }
+
+        .features-content-grid {
+            display: flex;
+            flex-direction: column-reverse; /* Image on top on mobile if desired, or keep standard */
+        }
+        
+        /* On reference, image might be visually distinct. We will keep regular order. */
+        .features-content-grid {
+            flex-direction: column; 
+        }
+    }
+</style>
+
+<main class="schuif-page">
+
+    <!-- HERO SECTION -->
+    <section class="schuif-hero">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left: Text -->
+                <div class="hero-content">
+                    <div class="hero-badge">Glazen Schuifwanden</div>
+                    <h1>GLAZEN SCHUIFWANDEN VAN AS ALUMINIUM</h1>
+                    <p class="lead">
+                        Maximale transparantie, minimale rolweerstand: Onze schuifwanden combineren CE-gecertificeerd aluminium met 10 mm ESG-veiligheidsglas voor een stille, nauwkeurige en duurzame loop – perfect passend voor uw buitenruimte.
+                    </p>
+
+                    <div class="hero-checks">
+                        <div class="check-item">
+                            <div class="check-icon">✓</div>
+                            <span>Soepel & stil</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon">✓</div>
+                            <span>Dubbelzijdig verstelbare vleugels</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon">✓</div>
+                            <span>10 mm ESG Veiligheidsglas</span>
+                        </div>
+                    </div>
+
+                    <div class="cta-group">
+                        <a href="#contact" class="btn btn-primary">Offerte aanvragen</a>
+                        <a href="#kenmerken" class="btn btn-secondary">Details bekijken</a>
+                    </div>
+                </div>
+
+                <!-- Right: Image -->
+                <div class="hero-image-wrapper">
+                    <img src="https://as-aluminium.de/wp-content/uploads/2025/10/20220915_163255-2048x1536-1.webp" alt="Glazen Schuifwanden">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTKENMERKEN (FEATURES) SECTION -->
+    <section id="kenmerken" class="features-section">
+        <div class="container">
+            <div class="kenmerken-wrapper">
+                <div class="features-content-grid">
+                    <!-- Left: Feature List -->
+                    <div class="features-text">
+                        <h2>PRODUCTKENMERKEN — KWALITEIT TOT IN HET DETAIL</h2>
+                        
+                        <div class="features-list">
+                            <!-- Feature 1 -->
+                            <div class="feature-item">
+                                <div class="feature-header">
+                                    <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="feature-title">CE-gecertificeerd Aluminium</span>
+                                </div>
+                                <p class="feature-desc">Hoogwaardige, corrosiebestendige profielen voor een maximale levensduur.</p>
+                            </div>
+
+                            <!-- Feature 2 -->
+                            <div class="feature-item">
+                                <div class="feature-header">
+                                    <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    <span class="feature-title">Dubbelzijdig verstelbare vleugels</span>
+                                </div>
+                                <p class="feature-desc">Exacte afstelling voor een perfecte loop en sluiting.</p>
+                            </div>
+
+                            <!-- Feature 3 -->
+                            <div class="feature-item">
+                                <div class="feature-header">
+                                    <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                    <span class="feature-title">Standaardkleur RAL 7016 ST</span>
+                                </div>
+                                <p class="feature-desc">Antraciet fijnstructuur – tijdloos en ongevoelig voor vuil.</p>
+                            </div>
+
+                            <!-- Feature 4 -->
+                            <div class="feature-item">
+                                <div class="feature-header">
+                                    <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                                    </svg>
+                                    <span class="feature-title">16 mm Zeswandige kanaalplaten (Indien van toepassing)</span>
+                                </div>
+                                <p class="feature-desc">Of kies voor glas voor volledige transparantie.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Image (Technical Detail) -->
+                     <div class="hero-image-wrapper">
+                         <!-- Re-using hero image as per plan if no other specific detail image is distinct and better -->
+                        <img src="https://as-aluminium.de/wp-content/uploads/2025/10/20220915_163255-2048x1536-1.webp" alt="Glas Detail">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENGINEERING DETAILS SECTION -->
+    <section class="tech-section">
+        <div class="container">
+            <div class="hero-grid">
+                 <!-- Left: Image -->
+                 <div class="hero-image-wrapper">
+                    <!-- Using same image for context as placeholder for 'engineering' image if identical to hero -->
+                    <img src="https://as-aluminium.de/wp-content/uploads/2025/10/20220915_163255-2048x1536-1.webp" alt="Engineering Detail">
+                </div>
+
+                <!-- Right: Text -->
+                <div class="tech-content">
+                    <h2 class="tech-title">ENGINEERING DETAILS</h2>
+                    <p class="tech-intro">
+                        Ontworpen voor een soepel dagelijks leven – van geleiding tot afwatering en tolerantiecompensatie.
+                    </p>
+
+                    <div class="tech-points">
+                        <div class="tech-point">
+                            <h4>
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Dubbelzijdig verstelbare hoogte
+                            </h4>
+                            <p>Jedes Element is links en rechts verstelbaar – voor een zuivere loop, ook bij lichte verzakkingen.</p>
+                        </div>
+                         <div class="tech-point">
+                            <h4>
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Geoptimaliseerde windbescherming
+                            </h4>
+                            <p>Geleide elementen en minimale kierbreedtes verminderen tocht aanzienlijk.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main><!-- DEBUG: FOOTER-PALACE.PHP IS LOADING -->
+<style>
+    /* Footer & Floating Button CSS */
+    :root {
+        --brand: #4c6d74;
+        --brand-light: #5d8189;
+        --brand-dark: #3a545a;
+        --ink: #fff;
+        --muted: #cfd6dc;
+        --line: rgba(255, 255, 255, 0.15);
+        --kayali: #ff7a00;
+        --kayali-light: #ff9433;
+        --bg-dark: #0a0a0a;
+        --bg-darker: #0a0a0a;
+        --success: #27d965;
+        --error: #ff4242;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+        --transition-fast: 0.2s ease;
+        --transition-normal: 0.3s ease;
+        --transition-slow: 0.45s ease;
+        --as-ci-primary: #64954A;
+        --as-ci-secondary: #4c6d74;
+    }
+
+    #as-footer.fx {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        color: var(--ink);
+        padding: 80px 24px 24px;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid var(--line);
+    }
+
+    .bg-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(circle at 20% 50%, rgba(76, 109, 116, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(76, 109, 116, 0.08) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .gradient-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 200px;
+        background: linear-gradient(180deg, rgba(76, 109, 116, 0.05) 0%, transparent 100%);
+        pointer-events: none;
+    }
+
+    .fx-wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        gap: 48px;
+        grid-template-columns: 1.5fr 1.2fr 1fr 1fr;
+        align-items: start;
+        position: relative;
+        z-index: 1;
+    }
+
+    .fx-col {
+        animation: fadeInUp 0.6s ease forwards;
+        opacity: 0;
+    }
+
+    .fx-col:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .fx-col:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .fx-col:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .fx-col:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .brand {
+        text-align: center;
+    }
+
+    .logo {
+        display: inline-block;
+        margin-bottom: 16px;
+        position: relative;
+    }
+
+    .logo img {
+        height: 120px;
+        max-width: 100%;
+        filter: drop-shadow(0 4px 16px rgba(76, 109, 116, 0.4));
+        transition: all var(--transition-slow);
+        position: relative;
+        z-index: 2;
+    }
+
+    .logo:hover img {
+        transform: scale(1.08) translateY(-4px);
+        filter: drop-shadow(0 8px 32px rgba(76, 109, 116, 0.8));
+    }
+
+    .tag {
+        margin: 0.5rem 0 1.5rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-weight: 300;
+        line-height: 1.5;
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .fx-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin: 20px 0;
+        padding: 0;
+    }
+
+    .action-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        padding: 12px 20px;
+        border-radius: 999px;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        transition: all var(--transition-fast);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .action-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(76, 109, 116, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.5s ease, height 0.5s ease;
+    }
+
+    .action-btn:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .action-btn:hover {
+        background: rgba(76, 109, 116, 0.2);
+        border-color: var(--brand);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(76, 109, 116, 0.3);
+    }
+
+    .action-icon {
+        width: 18px;
+        height: 18px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .action-btn span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hd {
+        margin: 0 0 16px;
+        font: 700 0.85rem/1 'Poppins', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--brand);
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding-bottom: 8px;
+    }
+
+    .hd::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 0;
+        background: linear-gradient(90deg, var(--brand), var(--brand-light));
+        transition: width var(--transition-normal);
+    }
+
+    .hd:hover {
+        color: var(--brand-light);
+    }
+
+    .hd:hover::after {
+        width: 100%;
+    }
+
+    .hd-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .status {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 12px 0 16px;
+    }
+
+    .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        font-weight: 600;
+        transition: all var(--transition-fast);
+    }
+
+    .pill:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateX(4px);
+    }
+
+    .pill .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--success);
+        box-shadow: 0 0 16px rgba(39, 217, 101, 0.8);
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            box-shadow: 0 0 16px rgba(39, 217, 101, 0.8);
+        }
+
+        50% {
+            box-shadow: 0 0 24px rgba(39, 217, 101, 1);
+        }
+    }
+
+    .pill.closed .dot {
+        background: var(--error);
+        box-shadow: 0 0 16px rgba(255, 66, 66, 0.8);
+        animation: none;
+    }
+
+    .today {
+        margin: 0;
+        color: var(--ink);
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .hours-collapsible {
+        margin-top: 12px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.02);
+        transition: all var(--transition-normal);
+    }
+
+    .hours-collapsible:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: var(--brand);
+    }
+
+    .summary {
+        cursor: pointer;
+        user-select: none;
+        color: var(--ink);
+        padding: 0;
+        outline: 0;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 600;
+    }
+
+    .summary-text {
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+    }
+
+    .summary-icon {
+        width: 18px;
+        height: 18px;
+        transition: transform var(--transition-normal);
+    }
+
+    details[open] .summary-icon {
+        transform: rotate(180deg);
+    }
+
+    .hours-list {
+        list-style: none;
+        margin: 16px 0 0;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: var(--muted);
+    }
+
+    .hours-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        transition: all var(--transition-fast);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .hours-list li:hover {
+        padding-left: 8px;
+        border-color: var(--brand);
+    }
+
+    .hours-list li:last-child {
+        border-bottom: none;
+    }
+
+    .hint {
+        color: var(--muted);
+        margin-top: 16px;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-style: italic;
+    }
+
+    .hint-icon {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+    }
+
+    .list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+    }
+
+    .list a {
+        color: var(--ink);
+        text-decoration: none;
+        opacity: 0.9;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 0;
+        transition: all var(--transition-fast);
+    }
+
+    .link-icon {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        transition: all var(--transition-fast);
+    }
+
+    .list a::after {
+        content: '';
+        position: absolute;
+        left: 28px;
+        bottom: 4px;
+        height: 2px;
+        width: 0;
+        background: linear-gradient(90deg, var(--brand), transparent);
+        transition: width var(--transition-normal);
+    }
+
+    .list a:hover {
+        opacity: 1;
+        color: var(--brand);
+        transform: translateX(6px);
+    }
+
+    .list a:hover .link-icon {
+        transform: scale(1.15);
+        color: var(--brand-light);
+    }
+
+    .list a:hover::after {
+        width: calc(100% - 28px);
+    }
+
+    .fx-foot {
+        max-width: 1280px;
+        margin: 32px auto 0;
+        padding-top: 24px;
+        border-top: 1px dashed var(--line);
+        position: relative;
+        z-index: 1;
+    }
+
+    .fx-foot-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .copyright,
+    .creator-link {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+
+    .kayali {
+        color: var(--kayali);
+        position: relative;
+        cursor: default;
+        transition: all var(--transition-fast);
+        font-weight: 700;
+    }
+
+    .kayali:hover {
+        color: var(--kayali-light);
+    }
+
+    .kayali::after {
+        content: attr(data-alt);
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 120%;
+        background: #111;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        padding: 8px 14px;
+        border-radius: 8px;
+        opacity: 0;
+        pointer-events: none;
+        white-space: nowrap;
+        transition: all var(--transition-normal);
+        font-size: 0.85rem;
+        box-shadow: var(--shadow-md);
+    }
+
+    .kayali:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+    }
+
+    .sweep {
+        position: absolute;
+        left: -40%;
+        right: -40%;
+        height: 2px;
+        opacity: 0.5;
+        filter: blur(0.5px);
+        background: linear-gradient(90deg, transparent, var(--brand), transparent);
+        animation: sweep 10s linear infinite;
+    }
+
+    .sweep.top {
+        top: 0;
+    }
+
+    .sweep.bottom {
+        bottom: 0;
+        animation-direction: reverse;
+    }
+
+    @keyframes sweep {
+        0% {
+            transform: translateX(-20%);
+        }
+
+        100% {
+            transform: translateX(20%);
+        }
+    }
+
+    .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--brand);
+        border-radius: 50%;
+        opacity: 0.3;
+        animation: float 15s infinite ease-in-out;
+    }
+
+    .particle:nth-child(1) {
+        left: 10%;
+        animation-delay: 0s;
+        animation-duration: 12s;
+    }
+
+    .particle:nth-child(2) {
+        left: 30%;
+        animation-delay: 2s;
+        animation-duration: 18s;
+    }
+
+    .particle:nth-child(3) {
+        left: 50%;
+        animation-delay: 4s;
+        animation-duration: 15s;
+    }
+
+    .particle:nth-child(4) {
+        left: 70%;
+        animation-delay: 6s;
+        animation-duration: 20s;
+    }
+
+    .particle:nth-child(5) {
+        left: 90%;
+        animation-delay: 8s;
+        animation-duration: 14s;
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(100vh) scale(0);
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 0.3;
+        }
+
+        90% {
+            opacity: 0.3;
+        }
+
+        50% {
+            transform: translateY(-10vh) scale(1);
+            opacity: 0.5;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .fx-wrap {
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        #as-footer.fx {
+            padding: 60px 20px 20px;
+        }
+
+        .fx-wrap {
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .brand,
+        .hours,
+        .links,
+        .legal {
+            text-align: left;
+        }
+
+        .logo {
+            display: block;
+        }
+
+        .actions {
+            justify-content: flex-start;
+        }
+
+        .fx-foot-content {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo img {
+            height: 90px;
+        }
+
+        .actions {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .action-btn {
+            justify-content: center;
+        }
+
+        .hd {
+            font-size: 0.8rem;
+        }
+    }
+
+    @media print {
+
+        .sweep,
+        .particles,
+        .bg-pattern,
+        .gradient-overlay {
+            display: none;
+        }
+
+        #as-footer.fx {
+            background: white;
+            color: black;
+        }
+    }
+
+    /* Float Button */
+    #as-floating-button {
+        position: fixed;
+        bottom: 22px;
+        left: 22px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .as-float-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        color: #fff;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(3px);
+        transition: transform .2s ease, box-shadow .3s ease, background-color .3s ease;
+        will-change: transform;
+    }
+
+    .as-float-call {
+        background: var(--as-ci-primary);
+    }
+
+    .as-float-contact {
+        background: var(--as-ci-secondary);
+    }
+
+    .as-float-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    .as-float-call:hover {
+        background: color-mix(in oklab, var(--as-ci-primary) 85%, black);
+    }
+
+    .as-float-contact:hover {
+        background: color-mix(in oklab, var(--as-ci-secondary) 85%, black);
+    }
+
+    .as-float-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    @media (max-width: 768px) {
+        #as-floating-button {
+            bottom: 16px;
+            left: 16px;
+            gap: 10px;
+        }
+
+        .as-float-btn {
+            width: 50px;
+            height: 50px;
+        }
+
+        .as-float-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+    }
+</style>
+
+<footer id="as-footer" class="fx" aria-labelledby="ft-title">
+    <h2 id="ft-title" class="sr-only">Palace Garden Footer</h2>
+    <div class="bg-pattern" aria-hidden="true"></div>
+    <div class="gradient-overlay" aria-hidden="true"></div>
+    <div class="fx-wrap">
+        <div class="fx-col brand">
+            <a href="index.html" class="logo" aria-label="Zur Startseite">
+                <img src="assets/logo-palacegarden.png" alt="Palace Garden Logo"
+                    loading="lazy">
+            </a>
+            <p class="tag">Ihr Partner für hochwertige Outdoor-Lösungen – Palace Garden.</p>
+            <div class="actions">
+                <a href="#contact" class="action-btn">
+                    <span>Jetzt anfragen</span>
+                    <svg class="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="tel:+31548514245" class="action-btn">
+                    <span>Anrufen</span>
+                    <svg class="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="fx-col hours">
+            <h3 class="hd">
+                <svg class="hd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Öffnungszeiten
+            </h3>
+            <div class="status">
+                <div class="pill closed" id="openPill">
+                    <span class="dot"></span>
+                    <span id="openLabel">Laden...</span>
+                </div>
+                <p class="today" id="todayText">Heute: ...</p>
+            </div>
+            <details class="hours-collapsible">
+                <summary class="summary">
+                    <span class="summary-text">Wochenübersicht</span>
+                    <svg class="summary-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </summary>
+                <ul class="hours-list" id="hoursList">
+                    <!-- JS filled -->
+                </ul>
+            </details>
+            <div class="hint">
+                <svg class="hint-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>Auch nach Vereinbarung möglich.</span>
+            </div>
+        </div>
+
+        <div class="fx-col links">
+            <h3 class="hd">
+                <svg class="hd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                Links
+            </h3>
+            <ul class="list">
+                <li><a href="index.html"><svg class="link-icon"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M3 3h18v18H3zM9 9h6v6H9z"></path>
+                        </svg>Produkte</a></li>
+                <li><a href="#galerie"><svg class="link-icon"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>Galerie</a></li>
+                <li><a href="#"><svg class="link-icon"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>Über uns</a></li>
+                <li><a href="#contact"><svg class="link-icon"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>Kontakt</a></li>
+            </ul>
+        </div>
+
+        <div class="fx-col legal">
+            <h3 class="hd">
+                <svg class="hd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                Rechtliches
+            </h3>
+            <ul class="list">
+                <li><a href="#"><svg class="link-icon"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>Impressum</a></li>
+                <li><a href="#"><svg class="link-icon"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>Datenschutz</a></li>
+                <li><span style="display:block;margin-top:12px;color:var(--muted);font-size:0.9rem;">
+                        <strong>Anschrift:</strong><br>
+                        Neonstraat 5C<br>
+                        7463 PE Rijssen<br>
+                        Niederlande
+                    </span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sweep top"></div>
+    <div class="sweep bottom"></div>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="fx-foot">
+        <div class="fx-foot-content">
+            <p class="copyright">© <span id="year"></span> Palace Garden — erstellt von <strong class="kayali"
+                    data-alt="Code & Design">IT-Kayali</strong></p>
+            <div class="payment-icons" style="display:flex;gap:10px;opacity:0.6;">
+                <!-- Optional Payment Icons could go here -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const yearEl = document.getElementById('year');
+        if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+        const HOURS = { 0: null, 1: { from: '08:00', to: '19:00' }, 2: { from: '08:00', to: '19:00' }, 3: { from: '08:00', to: '19:00' }, 4: { from: '08:00', to: '19:00' }, 5: { from: '08:00', to: '19:00' }, 6: { from: '08:00', to: '19:00' } };
+        const dayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+        const now = new Date();
+        const dow = now.getDay();
+        const pill = document.getElementById('openPill');
+        const label = document.getElementById('openLabel');
+        const text = document.getElementById('todayText');
+        const hoursList = document.getElementById('hoursList');
+        const toMin = (hhmm) => { const [h, m] = hhmm.split(':').map(Number); return (h * 60) + m; };
+        const today = HOURS[dow];
+        if (today) {
+            text.textContent = `Heute: ${today.from}–${today.to}`;
+            const mins = now.getHours() * 60 + now.getMinutes();
+            const start = toMin(today.from);
+            const end = toMin(today.to);
+            if (mins >= start && mins < end) { pill.classList.remove('closed'); label.textContent = 'Jetzt geöffnet'; } else { pill.classList.add('closed'); label.textContent = 'Geschlossen'; }
+        } else { text.textContent = 'Heute: Geschlossen'; pill.classList.add('closed'); label.textContent = 'Geschlossen'; }
+        Object.keys(HOURS).forEach((d) => {
+            const li = document.createElement('li');
+            const left = document.createElement('span');
+            const right = document.createElement('span');
+            left.textContent = dayNames[d]; left.style.fontWeight = '600';
+            const spec = HOURS[d];
+            right.textContent = spec ? `${spec.from}–${spec.to}` : 'Geschlossen';
+            right.style.opacity = spec ? '0.9' : '0.6';
+            li.append(left, right);
+            if (+d === dow) { li.style.color = 'var(--brand)'; li.style.fontWeight = '700'; }
+            hoursList.appendChild(li);
+        });
+        const kayali = document.querySelector('.kayali');
+        if (kayali) {
+            const baseText = kayali.textContent;
+            kayali.addEventListener('mouseenter', () => { kayali.textContent = 'IT-Kayali.de'; });
+            kayali.addEventListener('mouseleave', () => { kayali.textContent = baseText; });
+        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.fx-col').forEach(col => { observer.observe(col); });
+    });
+</script>
+
+<div id="as-floating-button" role="complementary" aria-label="Schnellzugriff Kontakt">
+    <a href="tel:+31548514245" class="as-float-btn as-float-call" title="Jetzt anrufen" aria-label="Jetzt anrufen"><svg
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-phone" aria-hidden="true">
+            <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-3.67-3.67A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4.18 2h3a2 2 0 0 1 2 1.72 17.6 17.6 0 0 0 .84 3.78 2 2 0 0 1-.41 2.13l-.52.52a1.8 1.8 0 0 0 0 2.54l3.96 3.96a1.8 1.8 0 0 0 2.54 0l.52-.52a2 2 0 0 1 2.13-.41 17.6 17.6 0 0 0 3.78.84 2 2 0 0 1 1.72 2z">
+            </path>
+        </svg></a>
+    <a href="#contact" class="as-float-btn as-float-contact" title="Kontaktformular öffnen"
+        aria-label="Kontaktformular öffnen"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="feather feather-mail" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+        </svg></a>
+</div>
+
+
+</body>
+
+</html>
