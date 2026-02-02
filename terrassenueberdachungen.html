@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Staatliches&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
         body { margin: 0; padding: 0; font-family: 'Open Sans', sans-serif; color: #333; }
         * { box-sizing: border-box; }
@@ -16,430 +17,319 @@
     </style>
 </head>
 <body>
+
+<!-- Palace Garden Custom Header -->
 <style>
-    #site-header,
-    #site-footer,
-    .site-footer,
-    footer.site-footer {
-        display: none !important;
-    }
-
-    html {
-        margin-top: 0 !important;
-    }
-
-    /* Ensure our header isn't hidden by functions.php logic */
+    /* Palace Garden Header Styles */
     .palace-header {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        height: auto !important;
-    }
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap"
-    rel="stylesheet">
-<style>
-    :root {
-        --accent-color: #4c6d74;
-        --accent-color-dark: #3a5257;
-        --accent-color-transparent-1: rgba(76, 109, 116, 0.1);
-        --accent-color-transparent-15: rgba(76, 109, 116, 0.15);
-        --accent-color-transparent-2: rgba(76, 109, 116, 0.2);
-        --accent-color-transparent-3: rgba(76, 109, 116, 0.3);
-        --accent-color-transparent-4: rgba(76, 109, 116, 0.4);
-        --accent-color-transparent-5: rgba(76, 109, 116, 0.5);
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /* Removed body style since we are inside body now */
-
-    .header {
-        background: #000000;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        position: sticky;
+        position: fixed;
         top: 0;
-        z-index: 1000;
-        transition: all 0.3s ease;
+        left: 0;
+        right: 0;
+        background: #000000;
+        z-index: 99999;
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid #ffffff;
     }
 
-    .header.scrolled {
-        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
-    }
-
-    .header-container {
+    .palace-header .header-container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 1.2rem 2rem;
+        padding: 0 30px;
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        align-items: center;
-        gap: 3rem;
+        height: 114px;
     }
 
-    .header-logo {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-    }
-
-    .header-logo:hover {
-        transform: scale(1.05);
-    }
-
-    .header-logo img {
-        height: 65px;
+    /* Logo */
+    .palace-header .header-logo img {
+        height: 70px;
         width: auto;
-        filter: brightness(1.1) drop-shadow(0 2px 8px var(--accent-color-transparent-3));
-        transition: all 0.3s ease;
+        transition: opacity 0.3s;
     }
 
-    .header.scrolled .header-logo img {
-        height: 55px;
+    .palace-header .header-logo:hover img {
+        opacity: 0.8;
     }
 
-    .header-nav {
+    /* Navigation */
+    .palace-header .palace-nav {
         display: flex;
         align-items: center;
-        gap: 2rem;
-        flex: 1;
-        justify-content: center;
+        gap: 35px;
     }
 
-    .nav-item {
-        position: relative;
-    }
-
-    .nav-link {
+    .palace-header .palace-nav>a,
+    .palace-header .nav-dropdown>a {
         color: #ffffff;
         text-decoration: none;
-        font-weight: 500;
-        font-size: 1rem;
-        padding: 0.75rem 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+        font-size: 16px;
+        font-weight: 600;
+        transition: color 0.3s;
+        padding: 10px 0;
+    }
+
+    .palace-header .palace-nav>a:hover,
+    .palace-header .nav-dropdown:hover>a {
+        color: #d4a853;
+    }
+
+    .palace-header .palace-nav>a.active {
+        color: #d4a853;
+        border-bottom: 2px solid #d4a853;
+    }
+
+    /* Dropdown Menu */
+    .palace-header .nav-dropdown {
         position: relative;
-        transition: all 0.3s ease;
-        border-radius: 8px;
     }
 
-    .nav-link:hover {
-        color: var(--accent-color);
-        background: var(--accent-color-transparent-1);
+    .palace-header .nav-dropdown>a::after {
+        content: '▾';
+        margin-left: 6px;
+        font-size: 10px;
     }
 
-    .nav-link.active {
-        color: var(--accent-color);
-    }
-
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 5px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 2px;
-        background: var(--accent-color);
-        transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active::after {
-        width: 60%;
-    }
-
-    .dropdown-icon {
-        width: 14px;
-        height: 14px;
-        transition: transform 0.3s ease;
-    }
-
-    .nav-item:hover .dropdown-icon {
-        transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
+    .palace-header .dropdown-menu {
         position: absolute;
         top: 100%;
-        left: 0;
-        background: #1a1a1a;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111111;
+        border-radius: 8px;
+        padding: 12px 0;
         min-width: 220px;
-        border-radius: 12px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-10px);
-        transition: all 0.5s ease;
-        margin-top: 0.5rem;
-        overflow: hidden;
-        border: 1px solid var(--accent-color-transparent-2);
+        transition: all 0.3s;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    .nav-item:hover .dropdown-menu {
+    .palace-header .nav-dropdown:hover .dropdown-menu {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0);
     }
 
-    .dropdown-item {
+    .palace-header .dropdown-menu a {
         display: block;
-        color: #ffffff;
+        color: #ccc;
         text-decoration: none;
-        padding: 0.9rem 1.5rem;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        border-left: 3px solid transparent;
+        padding: 10px 20px;
+        font-size: 14px;
+        transition: all 0.2s;
     }
 
-    .dropdown-item:hover {
-        background: var(--accent-color-transparent-15);
-        color: var(--accent-color);
-        border-left-color: var(--accent-color);
-        padding-left: 1.8rem;
+    .palace-header .dropdown-menu a:hover {
+        background: rgba(212, 168, 83, 0.15);
+        color: #d4a853;
+        padding-left: 25px;
     }
 
-    .header-actions {
+    /* CTA Buttons */
+    .palace-header .header-cta {
         display: flex;
-        gap: 1rem;
         align-items: center;
-        flex-shrink: 0;
+        gap: 12px;
     }
 
-    .header-btn {
-        padding: 0.75rem 1.75rem;
+    .palace-header .btn-outline {
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        padding: 14px 28px;
         border-radius: 50px;
         text-decoration: none;
+        font-size: 15px;
         font-weight: 600;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        display: inline-flex;
+        transition: all 0.3s;
+        display: flex;
         align-items: center;
-        gap: 0.6rem;
-        border: 2px solid transparent;
-        cursor: pointer;
-        white-space: nowrap;
+        gap: 10px;
     }
 
-    .header-btn-primary {
-        background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
-        color: white;
-        box-shadow: 0 4px 15px var(--accent-color-transparent-4);
+    .palace-header .btn-outline:hover {
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.15);
     }
 
-    .header-btn-primary:hover {
-        background: linear-gradient(135deg, var(--accent-color-dark) 0%, var(--accent-color) 100%);
+    .palace-header .btn-filled {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        color: #fff;
+        padding: 14px 28px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .palace-header .btn-filled:hover {
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px var(--accent-color-transparent-5);
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
     }
 
-    .header-btn-secondary {
-        background: transparent;
-        color: white;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .header-btn-secondary:hover {
-        background: var(--accent-color-transparent-1);
-        border-color: var(--accent-color);
-        color: var(--accent-color);
-        transform: translateY(-2px);
-    }
-
-    .btn-icon {
-        width: 18px;
-        height: 18px;
-    }
-
-    .mobile-menu-toggle {
+    /* Mobile Menu Button */
+    .palace-header .mobile-menu-btn {
         display: none;
-        background: transparent;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        color: white;
-        font-size: 1.5rem;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 28px;
         cursor: pointer;
-        padding: 0.5rem 0.75rem;
-        border-radius: 8px;
-        transition: all 0.3s ease;
+        padding: 5px;
     }
 
-    .mobile-menu-toggle:hover {
-        border-color: var(--accent-color);
-        color: var(--accent-color);
-        background: var(--accent-color-transparent-1);
+    /* Body padding for fixed header */
+    body {
+        padding-top: 114px !important;
     }
 
-    @media (max-width: 1100px) {
-        .header-nav {
-            position: fixed;
-            top: 90px;
-            left: -100%;
-            width: 100%;
-            max-width: 400px;
-            height: calc(100vh - 90px);
-            background: #000000;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: stretch;
-            padding: 2rem 1.5rem;
-            gap: 0.5rem;
-            transition: left 0.4s ease;
-            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
-            overflow-y: auto;
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .palace-header .palace-nav {
+            gap: 25px;
         }
 
-        .header-nav.active {
-            left: 0;
+        .palace-header .btn-outline span,
+        .palace-header .btn-filled span {
+            display: none;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .palace-header .header-container {
+            height: 70px;
         }
 
-        .nav-item {
-            width: 100%;
+        body {
+            padding-top: 70px !important;
         }
 
-        .nav-link {
-            width: 100%;
-            justify-content: space-between;
-            padding: 1rem 1.25rem;
+        .palace-header .palace-nav,
+        .palace-header .header-cta {
+            display: none;
         }
 
-        .dropdown-menu {
-            position: static;
-            opacity: 0;
-            visibility: hidden;
-            max-height: 0;
-            transform: none;
-            margin-top: 0;
-            box-shadow: none;
-            background: #0a0a0a;
-            border: none;
-            border-left: 3px solid var(--accent-color);
-            margin-left: 1rem;
-            transition: all 0.5s ease;
-        }
-
-        .nav-item.active .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            max-height: 500px;
-            margin-top: 0.5rem;
-        }
-
-        .dropdown-item {
-            padding: 0.75rem 1.25rem;
-        }
-
-        .header-actions {
-            flex-direction: column;
-            width: 100%;
-            gap: 0.75rem;
-        }
-
-        .header-btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .mobile-menu-toggle {
+        .palace-header .mobile-menu-btn {
             display: block;
         }
 
-        .header-container {
-            padding: 1rem 1.5rem;
+        .palace-header .header-logo img {
+            height: 40px;
+        }
+
+        /* Mobile Menu (shown when .mobile-open) */
+        .palace-header.mobile-open .palace-nav {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: #000000;
+            padding: 20px;
+            gap: 0;
+        }
+
+        .palace-header.mobile-open .palace-nav>a,
+        .palace-header.mobile-open .nav-dropdown>a {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        .palace-header.mobile-open .dropdown-menu {
+            position: static;
+            transform: none;
+            opacity: 1;
+            visibility: visible;
+            background: transparent;
+            box-shadow: none;
+            padding: 0 0 0 20px;
+        }
+
+        .palace-header.mobile-open .header-cta {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 20px;
+            gap: 10px;
+            position: absolute;
+            top: auto;
+            background: #000000;
         }
     }
 
-    @media (max-width: 480px) {
-        .header-logo img {
-            height: 50px;
-        }
-
-        .header-container {
-            padding: 0.75rem 1rem;
-        }
+    /* Admin bar adjustment */
+    .admin-bar .palace-header {
+        top: 32px;
     }
 
-    /* Prevent main content from jamming into header */
-    .main-content {
-        flex: 1;
-        padding: 0;
-        max-width: 100%;
-        width: 100%;
+    @media (max-width: 782px) {
+        .admin-bar .palace-header {
+            top: 46px;
+        }
     }
 </style>
-</head>
 
-<header class="header palace-header" id="mainHeader">
+<header class="palace-header">
     <div class="header-container">
-        <a href="index.html" class="header-logo" aria-label="Palace Garden Startseite">
-            <img src="assets/logo.png" alt="Palace Garden Logo">
+        <!-- Logo -->
+        <a href="/palacegarden/" class="header-logo">
+            <img src="#" alt="Palace Garden">
         </a>
-        <nav class="header-nav" id="headerNav">
-            <div class="nav-item"><a href="index.html" class="nav-link active">Home</a></div>
-            <div class="nav-item">
-                <a href="#" class="nav-link">Producten<svg class="dropdown-icon"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg></a>
+
+        <!-- Navigation -->
+        <nav class="palace-nav">
+            <a href="/palacegarden/" >Home</a>
+            <div class="nav-dropdown">
+                <a href="#">Producten</a>
                 <div class="dropdown-menu">
-                    <a href="index.html"
-                        class="dropdown-item">Terrasseoverkappingen</a>
-                    <a href="schiebeanlagen.html" class="dropdown-item">Schiebeanlagen</a>
-                    <a href="#contact" class="dropdown-item">Seitenwände</a>
-                    <a href="#" class="dropdown-item">Sonnenschutz</a>
+                    <a href="index.html">Terrasoverkappingen</a>
+                    <a href="#">Zonwering</a>
+                    <a href="schiebeanlagen.html">Schuifsystemen</a>
+                    <a href="#contact">Zijwanden</a>
                 </div>
             </div>
-            <div class="nav-item"><a href="#galerie" class="nav-link">Galerie</a></div>
-            <div class="nav-item">
-                <a href="#about" class="nav-link">Über uns<svg class="dropdown-icon"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg></a>
+            <a href="/palacegarden/portfolio/">Galerij</a>
+            <div class="nav-dropdown">
+                <a href="/palacegarden/about/">Over ons</a>
                 <div class="dropdown-menu">
-                    <a href="#contact" class="dropdown-item">Kontakt</a>
-                    <a href="#" class="dropdown-item">Impressum</a>
-                    <a href="#" class="dropdown-item">Datenschutz</a>
+                    <a href="/palacegarden/about/">Bedrijf</a>
+                    <a href="/palacegarden/contact/">Contact</a>
                 </div>
-            </div>
-            <div class="header-actions">
-                <a href="tel:+31548514245" class="header-btn header-btn-secondary"><svg class="btn-icon"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                        </path>
-                    </svg>Anrufen</a>
-                <a href="#contact" class="header-btn header-btn-primary"><svg
-                        class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                        </path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>Kontakt</a>
             </div>
         </nav>
-        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menü öffnen">☰</button>
+
+        <!-- CTA Buttons -->
+        <div class="header-cta">
+            <a href="tel:+4912345678" class="btn-outline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                </svg>
+                <span>Bellen</span>
+            </a>
+            <a href="/palacegarden/contact/" class="btn-filled">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <span>Contact</span>
+            </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" onclick="this.closest('.palace-header').classList.toggle('mobile-open')">
+            ☰
+        </button>
     </div>
 </header>
-<script>
-    const mainHeader = document.getElementById('mainHeader');
-    window.addEventListener('scroll', () => { if (window.pageYOffset > 50) { mainHeader.classList.add('scrolled'); } else { mainHeader.classList.remove('scrolled'); } });
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const headerNav = document.getElementById('headerNav');
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', () => { headerNav.classList.toggle('active'); const isActive = headerNav.classList.contains('active'); mobileMenuToggle.textContent = isActive ? '✕' : '☰'; });
-        document.addEventListener('click', (e) => { if (!headerNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) { headerNav.classList.remove('active'); mobileMenuToggle.textContent = '☰'; } });
-        document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('click', (e) => { if (window.innerWidth <= 1100) { const parentItem = link.closest('.nav-item'); if (parentItem.querySelector('.dropdown-menu')) { e.preventDefault(); parentItem.classList.toggle('active'); } } }); });
-    }
-</script>
 
 <style>
     /* =====================================================
@@ -1054,975 +944,797 @@
         </div>
     </section>
 
-</div><!-- DEBUG: FOOTER-PALACE.PHP IS LOADING -->
+</div>
+<!-- Palace Garden Custom Footer -->
 <style>
-    /* Footer & Floating Button CSS */
-    :root {
-        --brand: #4c6d74;
-        --brand-light: #5d8189;
-        --brand-dark: #3a545a;
-        --ink: #fff;
-        --muted: #cfd6dc;
-        --line: rgba(255, 255, 255, 0.15);
-        --kayali: #ff7a00;
-        --kayali-light: #ff9433;
-        --bg-dark: #0a0a0a;
-        --bg-darker: #0a0a0a;
-        --success: #27d965;
-        --error: #ff4242;
-        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
-        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
-        --transition-fast: 0.2s ease;
-        --transition-normal: 0.3s ease;
-        --transition-slow: 0.45s ease;
-        --as-ci-primary: #64954A;
-        --as-ci-secondary: #4c6d74;
+    /* Palace Garden Footer Styles - AS Aluminium Design */
+    .footer-palace {
+        background: #0a0f0d;
+        color: #ffffff;
+        padding: 60px 0 0;
+        font-family: 'Montserrat', sans-serif;
     }
 
-    #as-footer.fx {
-        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-        color: var(--ink);
-        padding: 80px 24px 24px;
-        position: relative;
-        overflow: hidden;
-        border-top: 1px solid var(--line);
-    }
-
-    .bg-pattern {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: radial-gradient(circle at 20% 50%, rgba(76, 109, 116, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(76, 109, 116, 0.08) 0%, transparent 50%);
-        pointer-events: none;
-    }
-
-    .gradient-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 200px;
-        background: linear-gradient(180deg, rgba(76, 109, 116, 0.05) 0%, transparent 100%);
-        pointer-events: none;
-    }
-
-    .fx-wrap {
-        max-width: 1280px;
+    .footer-container {
+        max-width: 1400px;
         margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    .footer-main-grid {
         display: grid;
-        gap: 48px;
-        grid-template-columns: 1.5fr 1.2fr 1fr 1fr;
-        align-items: start;
-        position: relative;
-        z-index: 1;
+        grid-template-columns: 1.5fr 1.2fr 1fr 1.3fr;
+        gap: 50px;
+        padding-bottom: 40px;
     }
 
-    .fx-col {
-        animation: fadeInUp 0.6s ease forwards;
-        opacity: 0;
-    }
-
-    .fx-col:nth-child(1) {
-        animation-delay: 0.1s;
-    }
-
-    .fx-col:nth-child(2) {
-        animation-delay: 0.2s;
-    }
-
-    .fx-col:nth-child(3) {
-        animation-delay: 0.3s;
-    }
-
-    .fx-col:nth-child(4) {
-        animation-delay: 0.4s;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .brand {
-        text-align: center;
-    }
-
-    .logo {
-        display: inline-block;
-        margin-bottom: 16px;
-        position: relative;
-    }
-
-    .logo img {
-        height: 120px;
-        max-width: 100%;
-        filter: drop-shadow(0 4px 16px rgba(76, 109, 116, 0.4));
-        transition: all var(--transition-slow);
-        position: relative;
-        z-index: 2;
-    }
-
-    .logo:hover img {
-        transform: scale(1.08) translateY(-4px);
-        filter: drop-shadow(0 8px 32px rgba(76, 109, 116, 0.8));
-    }
-
-    .tag {
-        margin: 0.5rem 0 1.5rem;
-        color: var(--muted);
-        font-size: 0.95rem;
-        font-weight: 300;
-        line-height: 1.5;
-    }
-
-    .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-    }
-
-    .fx-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-        margin: 20px 0;
-        padding: 0;
-    }
-
-    .action-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        border: 1px solid var(--line);
-        padding: 12px 20px;
-        border-radius: 999px;
-        color: var(--ink);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.9rem;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        transition: all var(--transition-fast);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .action-btn::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(76, 109, 116, 0.3);
-        transform: translate(-50%, -50%);
-        transition: width 0.5s ease, height 0.5s ease;
-    }
-
-    .action-btn:hover::before {
-        width: 300px;
-        height: 300px;
-    }
-
-    .action-btn:hover {
-        background: rgba(76, 109, 116, 0.2);
-        border-color: var(--brand);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(76, 109, 116, 0.3);
-    }
-
-    .action-icon {
-        width: 18px;
-        height: 18px;
-        position: relative;
-        z-index: 1;
-    }
-
-    .action-btn span {
-        position: relative;
-        z-index: 1;
-    }
-
-    .hd {
-        margin: 0 0 16px;
-        font: 700 0.85rem/1 'Poppins', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--brand);
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding-bottom: 8px;
-    }
-
-    .hd::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 2px;
-        width: 0;
-        background: linear-gradient(90deg, var(--brand), var(--brand-light));
-        transition: width var(--transition-normal);
-    }
-
-    .hd:hover {
-        color: var(--brand-light);
-    }
-
-    .hd:hover::after {
-        width: 100%;
-    }
-
-    .hd-icon {
-        width: 16px;
-        height: 16px;
-    }
-
-    .status {
+    /* Footer Column Styling */
+    .footer-col {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin: 12px 0 16px;
     }
 
-    .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 20px;
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        font-weight: 600;
-        transition: all var(--transition-fast);
-    }
-
-    .pill:hover {
-        background: rgba(255, 255, 255, 0.08);
-        transform: translateX(4px);
-    }
-
-    .pill .dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--success);
-        box-shadow: 0 0 16px rgba(39, 217, 101, 0.8);
-        animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-
-        0%,
-        100% {
-            box-shadow: 0 0 16px rgba(39, 217, 101, 0.8);
-        }
-
-        50% {
-            box-shadow: 0 0 24px rgba(39, 217, 101, 1);
-        }
-    }
-
-    .pill.closed .dot {
-        background: var(--error);
-        box-shadow: 0 0 16px rgba(255, 66, 66, 0.8);
-        animation: none;
-    }
-
-    .today {
-        margin: 0;
-        color: var(--ink);
-        font-weight: 600;
-        font-size: 0.95rem;
-    }
-
-    .hours-collapsible {
-        margin-top: 12px;
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        padding: 16px;
-        background: rgba(255, 255, 255, 0.02);
-        transition: all var(--transition-normal);
-    }
-
-    .hours-collapsible:hover {
-        background: rgba(255, 255, 255, 0.04);
-        border-color: var(--brand);
-    }
-
-    .summary {
-        cursor: pointer;
-        user-select: none;
-        color: var(--ink);
-        padding: 0;
-        outline: 0;
-        position: relative;
+    .footer-col-header {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 20px;
+        color: #5a7d6a;
+        font-size: 12px;
         font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
-    .summary-text {
-        font-size: 0.9rem;
-        letter-spacing: 0.5px;
+    .footer-col-header svg {
+        width: 14px;
+        height: 14px;
+        fill: #5a7d6a;
     }
 
-    .summary-icon {
-        width: 18px;
-        height: 18px;
-        transition: transform var(--transition-normal);
+    /* Logo Section */
+    .footer-logo-section {
+        display: flex;
+        flex-direction: column;
     }
 
-    details[open] .summary-icon {
+    .footer-logo-graphic {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .footer-logo-graphic .bar {
+        width: 20px;
+        height: 60px;
+        background: linear-gradient(180deg, #5a7d6a 0%, #3d5a4a 100%);
+        border-radius: 3px;
+    }
+
+    .footer-logo-graphic .bar:nth-child(2) {
+        height: 50px;
+        margin-top: 10px;
+    }
+
+    .footer-brand-name {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .footer-tagline {
+        color: #6a7a70;
+        font-size: 13px;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
+
+    .footer-btn-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+
+    .footer-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        border: 1px solid #3a4a40;
+        border-radius: 50px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 500;
+        transition: all 0.3s;
+        background: transparent;
+    }
+
+    .footer-btn:hover {
+        background: rgba(90, 125, 106, 0.2);
+        border-color: #5a7d6a;
+    }
+
+    .footer-btn svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+    }
+
+    /* Status Section */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: rgba(40, 50, 45, 0.8);
+        border-radius: 20px;
+        margin-bottom: 15px;
+        width: fit-content;
+    }
+
+    .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ef4444;
+    }
+
+    .status-dot.open {
+        background: #22c55e;
+    }
+
+    .status-text {
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .today-hours {
+        color: #9ca3af;
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .today-hours strong {
+        color: #fff;
+    }
+
+    .hours-dropdown-container {
+        position: relative;
+        max-width: 200px;
+    }
+
+    .hours-dropdown {
+        background: rgba(40, 50, 45, 0.6);
+        border: 1px solid #3a4a40;
+        border-radius: 6px;
+        padding: 12px 16px;
+        color: #9ca3af;
+        font-size: 13px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+
+    .hours-dropdown:hover {
+        background: rgba(40, 50, 45, 0.9);
+        border-color: #5a7d6a;
+    }
+
+    .hours-dropdown svg {
+        width: 16px;
+        height: 16px;
+        fill: #9ca3af;
+        transition: transform 0.3s ease;
+    }
+
+    .hours-dropdown-container.open .hours-dropdown svg {
         transform: rotate(180deg);
+    }
+
+    .hours-dropdown-content {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(30, 40, 35, 0.98);
+        border: 1px solid #3a4a40;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 100;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hours-dropdown-container.open .hours-dropdown-content {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     .hours-list {
         list-style: none;
-        margin: 16px 0 0;
         padding: 0;
-        display: grid;
-        gap: 8px;
-        font-size: 0.9rem;
-        color: var(--muted);
+        margin: 0;
     }
 
     .hours-list li {
         display: flex;
         justify-content: space-between;
-        padding: 10px 0;
-        transition: all var(--transition-fast);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .hours-list li:hover {
-        padding-left: 8px;
-        border-color: var(--brand);
+        padding: 6px 0;
+        font-size: 13px;
+        border-bottom: 1px solid rgba(90, 125, 106, 0.2);
     }
 
     .hours-list li:last-child {
         border-bottom: none;
     }
 
-    .hint {
-        color: var(--muted);
-        margin-top: 16px;
-        font-size: 0.85rem;
+    .hours-list .day {
+        color: #9ca3af;
+    }
+
+    .hours-list .time {
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .hours-list li.today {
+        background: rgba(90, 125, 106, 0.2);
+        border-radius: 4px;
+        padding: 6px 8px;
+        margin: 0 -8px;
+    }
+
+    .hours-list li.today .day {
+        color: #5a7d6a;
+        font-weight: 600;
+    }
+
+    /* Quick Links */
+    .quick-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .quick-links li {
+        margin-bottom: 12px;
+    }
+
+    .quick-links a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #9ca3af;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+    }
+
+    .quick-links a:hover {
+        color: #5a7d6a;
+    }
+
+    .quick-links svg {
+        width: 16px;
+        height: 16px;
+        fill: #6b7280;
+    }
+
+    /* Contact Section */
+    .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 25px 0;
+    }
+
+    .contact-list li {
+        margin-bottom: 12px;
+    }
+
+    .contact-list a {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: #9ca3af;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+    }
+
+    .contact-list a:hover {
+        color: #5a7d6a;
+    }
+
+    .contact-list svg {
+        width: 16px;
+        height: 16px;
+        fill: #6b7280;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .contact-label {
+        color: #6b7280;
+        font-size: 12px;
+    }
+
+    /* Legal Links */
+    .legal-header {
+        color: #5a7d6a;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+
+    .legal-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .legal-links li {
+        margin-bottom: 10px;
+    }
+
+    .legal-links a {
         display: flex;
         align-items: center;
         gap: 8px;
-        font-style: italic;
-    }
-
-    .hint-icon {
-        width: 16px;
-        height: 16px;
-        flex-shrink: 0;
-    }
-
-    .list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: grid;
-        gap: 12px;
-    }
-
-    .list a {
-        color: var(--ink);
+        color: #9ca3af;
         text-decoration: none;
-        opacity: 0.9;
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 6px 0;
-        transition: all var(--transition-fast);
+        font-size: 13px;
+        transition: color 0.3s;
     }
 
-    .link-icon {
-        width: 18px;
-        height: 18px;
-        flex-shrink: 0;
-        transition: all var(--transition-fast);
+    .legal-links a:hover {
+        color: #5a7d6a;
     }
 
-    .list a::after {
-        content: '';
-        position: absolute;
-        left: 28px;
-        bottom: 4px;
-        height: 2px;
-        width: 0;
-        background: linear-gradient(90deg, var(--brand), transparent);
-        transition: width var(--transition-normal);
+    .legal-links svg {
+        width: 14px;
+        height: 14px;
+        fill: #6b7280;
     }
 
-    .list a:hover {
-        opacity: 1;
-        color: var(--brand);
-        transform: translateX(6px);
-    }
-
-    .list a:hover .link-icon {
-        transform: scale(1.15);
-        color: var(--brand-light);
-    }
-
-    .list a:hover::after {
-        width: calc(100% - 28px);
-    }
-
-    .fx-foot {
-        max-width: 1280px;
-        margin: 32px auto 0;
-        padding-top: 24px;
-        border-top: 1px dashed var(--line);
-        position: relative;
-        z-index: 1;
-    }
-
-    .fx-foot-content {
+    /* Footer Bottom */
+    .footer-bottom {
+        border-top: 1px solid #1f2a24;
+        padding: 20px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 16px;
     }
 
-    .copyright,
-    .creator-link {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.9rem;
+    .footer-copyright {
+        color: #6b7280;
+        font-size: 13px;
     }
 
-    .kayali {
-        color: var(--kayali);
-        position: relative;
-        cursor: default;
-        transition: all var(--transition-fast);
-        font-weight: 700;
+    .footer-copyright a {
+        color: #5a7d6a;
+        text-decoration: none;
     }
 
-    .kayali:hover {
-        color: var(--kayali-light);
+    .footer-copyright a:hover {
+        text-decoration: underline;
     }
 
-    .kayali::after {
-        content: attr(data-alt);
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 120%;
-        background: #111;
-        color: var(--ink);
-        border: 1px solid var(--line);
-        padding: 8px 14px;
-        border-radius: 8px;
-        opacity: 0;
-        pointer-events: none;
-        white-space: nowrap;
-        transition: all var(--transition-normal);
-        font-size: 0.85rem;
-        box-shadow: var(--shadow-md);
+    .footer-flags {
+        display: flex;
+        gap: 8px;
     }
 
-    .kayali:hover::after {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-4px);
+    .footer-flags img {
+        width: 24px;
+        height: 16px;
+        border-radius: 2px;
     }
 
-    .sweep {
-        position: absolute;
-        left: -40%;
-        right: -40%;
-        height: 2px;
-        opacity: 0.5;
-        filter: blur(0.5px);
-        background: linear-gradient(90deg, transparent, var(--brand), transparent);
-        animation: sweep 10s linear infinite;
+    /* Floating Action Buttons */
+    .floating-actions {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
     }
 
-    .sweep.top {
-        top: 0;
-    }
-
-    .sweep.bottom {
-        bottom: 0;
-        animation-direction: reverse;
-    }
-
-    @keyframes sweep {
-        0% {
-            transform: translateX(-20%);
-        }
-
-        100% {
-            transform: translateX(20%);
-        }
-    }
-
-    .particles {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        pointer-events: none;
-    }
-
-    .particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: var(--brand);
+    .fab-btn {
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
-        opacity: 0.3;
-        animation: float 15s infinite ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
-    .particle:nth-child(1) {
-        left: 10%;
-        animation-delay: 0s;
-        animation-duration: 12s;
+    .fab-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
-    .particle:nth-child(2) {
-        left: 30%;
-        animation-delay: 2s;
-        animation-duration: 18s;
+    .fab-phone {
+        background: #5a7d6a;
     }
 
-    .particle:nth-child(3) {
-        left: 50%;
-        animation-delay: 4s;
-        animation-duration: 15s;
+    .fab-email {
+        background: #3a4a40;
     }
 
-    .particle:nth-child(4) {
-        left: 70%;
-        animation-delay: 6s;
-        animation-duration: 20s;
+    .fab-btn svg {
+        width: 24px;
+        height: 24px;
+        fill: #fff;
     }
 
-    .particle:nth-child(5) {
-        left: 90%;
-        animation-delay: 8s;
-        animation-duration: 14s;
-    }
-
-    @keyframes float {
-
-        0%,
-        100% {
-            transform: translateY(100vh) scale(0);
-            opacity: 0;
-        }
-
-        10% {
-            opacity: 0.3;
-        }
-
-        90% {
-            opacity: 0.3;
-        }
-
-        50% {
-            transform: translateY(-10vh) scale(1);
-            opacity: 0.5;
-        }
-    }
-
+    /* Responsive */
     @media (max-width: 1024px) {
-        .fx-wrap {
+        .footer-main-grid {
             grid-template-columns: 1fr 1fr;
             gap: 40px;
         }
     }
 
-    @media (max-width: 768px) {
-        #as-footer.fx {
-            padding: 60px 20px 20px;
-        }
-
-        .fx-wrap {
+    @media (max-width: 600px) {
+        .footer-main-grid {
             grid-template-columns: 1fr;
-            gap: 48px;
+            gap: 35px;
         }
 
-        .brand,
-        .hours,
-        .links,
-        .legal {
-            text-align: left;
+        .footer-container {
+            padding: 0 20px;
         }
 
-        .logo {
-            display: block;
-        }
-
-        .actions {
-            justify-content: flex-start;
-        }
-
-        .fx-foot-content {
+        .footer-bottom {
             flex-direction: column;
+            gap: 15px;
             text-align: center;
         }
-    }
 
-    @media (max-width: 480px) {
-        .logo img {
-            height: 90px;
-        }
-
-        .actions {
-            flex-direction: column;
-            align-items: stretch;
-        }
-
-        .action-btn {
-            justify-content: center;
-        }
-
-        .hd {
-            font-size: 0.8rem;
-        }
-    }
-
-    @media print {
-
-        .sweep,
-        .particles,
-        .bg-pattern,
-        .gradient-overlay {
-            display: none;
-        }
-
-        #as-footer.fx {
-            background: white;
-            color: black;
-        }
-    }
-
-    /* Float Button */
-    #as-floating-button {
-        position: fixed;
-        bottom: 22px;
-        left: 22px;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-    }
-
-    .as-float-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        color: #fff;
-        text-decoration: none;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-        backdrop-filter: blur(3px);
-        transition: transform .2s ease, box-shadow .3s ease, background-color .3s ease;
-        will-change: transform;
-    }
-
-    .as-float-call {
-        background: var(--as-ci-primary);
-    }
-
-    .as-float-contact {
-        background: var(--as-ci-secondary);
-    }
-
-    .as-float-btn:hover {
-        transform: scale(1.08);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-    }
-
-    .as-float-call:hover {
-        background: color-mix(in oklab, var(--as-ci-primary) 85%, black);
-    }
-
-    .as-float-contact:hover {
-        background: color-mix(in oklab, var(--as-ci-secondary) 85%, black);
-    }
-
-    .as-float-btn svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    @media (max-width: 768px) {
-        #as-floating-button {
-            bottom: 16px;
-            left: 16px;
-            gap: 10px;
-        }
-
-        .as-float-btn {
-            width: 50px;
-            height: 50px;
-        }
-
-        .as-float-btn svg {
-            width: 22px;
-            height: 22px;
+        .floating-actions {
+            bottom: 20px;
+            left: 20px;
         }
     }
 </style>
 
-<footer id="as-footer" class="fx" aria-labelledby="ft-title">
-    <h2 id="ft-title" class="sr-only">Palace Garden Footer</h2>
-    <div class="bg-pattern" aria-hidden="true"></div>
-    <div class="gradient-overlay" aria-hidden="true"></div>
-    <div class="fx-wrap">
-        <div class="fx-col brand">
-            <a href="index.html" class="logo" aria-label="Zur Startseite">
-                <img src="assets/logo.png" alt="Palace Garden Logo"
-                    loading="lazy">
-            </a>
-            <p class="tag">Ihr Partner für hochwertige Outdoor-Lösungen – Palace Garden.</p>
-            <div class="actions">
-                <a href="#contact" class="action-btn">
-                    <span>Jetzt anfragen</span>
-                    <svg class="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-                <a href="tel:+31548514245" class="action-btn">
-                    <span>Anrufen</span>
-                    <svg class="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                        </path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-
-        <div class="fx-col hours">
-            <h3 class="hd">
-                <svg class="hd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                Öffnungszeiten
-            </h3>
-            <div class="status">
-                <div class="pill closed" id="openPill">
-                    <span class="dot"></span>
-                    <span id="openLabel">Laden...</span>
+<footer class="footer-palace">
+    <div class="footer-container">
+        <div class="footer-main-grid">
+            <!-- Column 1: Logo & Company Info -->
+            <div class="footer-col footer-logo-section">
+                <img src="#"
+                    alt="Palace Garden" style="max-width: 200px; margin-bottom: 15px;">
+                <p class="footer-tagline">
+                    Uw partner voor hoogwaardige outdoor-oplossingen –<br>
+                    Terrasoverkappingen & Zonwering
+                </p>
+                <div class="footer-btn-row">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Neonstraat+5C+Rijssen" target="_blank"
+                        class="footer-btn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        Routebeschrijving
+                    </a>
+                    <a href="/palacegarden/contact/" class="footer-btn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        Contact
+                    </a>
                 </div>
-                <p class="today" id="todayText">Heute: ...</p>
-            </div>
-            <details class="hours-collapsible">
-                <summary class="summary">
-                    <span class="summary-text">Wochenübersicht</span>
-                    <svg class="summary-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
+                <a href="tel:+31548514245" class="footer-btn" style="width: fit-content;">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                     </svg>
-                </summary>
-                <ul class="hours-list" id="hoursList">
-                    <!-- JS filled -->
+                    Bellen
+                </a>
+            </div>
+
+            <!-- Column 2: Opening Status -->
+            <div class="footer-col">
+                <div class="footer-col-header">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                    </svg>
+                    STATUS VANDAAG
+                </div>
+                <div class="status-badge">
+                    <span class="status-dot" id="status-dot"></span>
+                    <span class="status-text" id="status-text">Gesloten</span>
+                </div>
+                <p class="today-hours">
+                    <strong>Vandaag:</strong> <span id="today-hours">08:00–19:00</span>
+                </p>
+                <div class="hours-dropdown-container" id="hours-dropdown-container">
+                    <div class="hours-dropdown-content">
+                        <ul class="hours-list">
+                            <li data-day="1"><span class="day">Maandag</span><span class="time">08:00–19:00</span></li>
+                            <li data-day="2"><span class="day">Dinsdag</span><span class="time">08:00–19:00</span></li>
+                            <li data-day="3"><span class="day">Woensdag</span><span class="time">08:00–19:00</span></li>
+                            <li data-day="4"><span class="day">Donderdag</span><span class="time">08:00–19:00</span>
+                            </li>
+                            <li data-day="5"><span class="day">Vrijdag</span><span class="time">08:00–19:00</span></li>
+                            <li data-day="6"><span class="day">Zaterdag</span><span class="time">09:00–17:00</span></li>
+                            <li data-day=\"0\"><span class=\"day\">Zondag</span><span class=\"time\">Gesloten</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hours-dropdown" id="hours-dropdown-toggle">
+                        Alle openingstijden
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7 10l5 5 5-5z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3: Quick Links -->
+            <div class="footer-col">
+                <div class="footer-col-header">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z" />
+                    </svg>
+                    SNELLE LINKS
+                </div>
+                <ul class="quick-links">
+                    <li>
+                        <a href="/palacegarden/">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/palacegarden/terrassenueberdachungen/">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                            </svg>
+                            Producten
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/palacegarden/terrassenueberdachungen/">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                            </svg>
+                            Terrasoverkapping
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/palacegarden/schiebeanlagen/">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                            </svg>
+                            Schuifsystemen
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/palacegarden/seitenwaende/">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                            </svg>
+                            Zijwanden
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/palacegarden/sonnenschutz/">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z" />
+                            </svg>
+                            Zonwering
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/palacegarden/portfolio/">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                            </svg>
+                            Galerij
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/palacegarden/about/">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                            </svg>
+                            Over ons
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/palacegarden/contact/">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                            Kontakt
+                        </a>
+                    </li>
                 </ul>
-            </details>
-            <div class="hint">
-                <svg class="hint-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-                <span>Auch nach Vereinbarung möglich.</span>
+            </div>
+
+            <!-- Column 4: Contact & Legal -->
+            <div class="footer-col">
+                <div class="footer-col-header">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                    </svg>
+                    CONTACT
+                </div>
+                <ul class="contact-list">
+                    <li>
+                        <a href="tel:+31548514245">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                            </svg>
+                            <span>+31 548 514245</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:info@palacegarden.nl">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                            <span>info@palacegarden.nl</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Neonstraat+5C+Rijssen" target="_blank">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                            </svg>
+                            <span>Neonstraat 5C<br>7463 PE Rijssen</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="legal-header">JURIDISCH</div>
+                <ul class="legal-links">
+                    <li>
+                        <a href="/palacegarden/impressum/">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                            </svg>
+                            Impressum
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/palacegarden/datenschutz/">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+                            </svg>
+                            Privacyverklaring
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <div class="fx-col links">
-            <h3 class="hd">
-                <svg class="hd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                </svg>
-                Links
-            </h3>
-            <ul class="list">
-                <li><a href="#"><svg class="link-icon"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M3 3h18v18H3zM9 9h6v6H9z"></path>
-                        </svg>Produkte</a></li>
-                <li><a href="#galerie"><svg class="link-icon"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <polyline points="21 15 16 10 5 21"></polyline>
-                        </svg>Galerie</a></li>
-                <li><a href="#about"><svg class="link-icon"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>Über uns</a></li>
-                <li><a href="#contact"><svg class="link-icon"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                            </path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>Kontakt</a></li>
-            </ul>
-        </div>
-
-        <div class="fx-col legal">
-            <h3 class="hd">
-                <svg class="hd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-                Rechtliches
-            </h3>
-            <ul class="list">
-                <li><a href="#"><svg class="link-icon"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="16" x2="12" y2="12"></line>
-                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                        </svg>Impressum</a></li>
-                <li><a href="#"><svg class="link-icon"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                            </path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>Datenschutz</a></li>
-                <li><span style="display:block;margin-top:12px;color:var(--muted);font-size:0.9rem;">
-                        <strong>Anschrift:</strong><br>
-                        Neonstraat 5C<br>
-                        7463 PE Rijssen<br>
-                        Niederlande
-                    </span></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="sweep top"></div>
-    <div class="sweep bottom"></div>
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
-
-    <div class="fx-foot">
-        <div class="fx-foot-content">
-            <p class="copyright">© <span id="year"></span> Palace Garden — erstellt von <strong class="kayali"
-                    data-alt="Code & Design">IT-Kayali</strong></p>
-            <div class="payment-icons" style="display:flex;gap:10px;opacity:0.6;">
-                <!-- Optional Payment Icons could go here -->
-            </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                Copyright © 2025 | Created by <a href="#" target="_blank">My Vision Agency</a>
+            </p>
         </div>
     </div>
 </footer>
 
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        const yearEl = document.getElementById('year');
-        if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
-        const HOURS = { 0: null, 1: { from: '08:00', to: '19:00' }, 2: { from: '08:00', to: '19:00' }, 3: { from: '08:00', to: '19:00' }, 4: { from: '08:00', to: '19:00' }, 5: { from: '08:00', to: '19:00' }, 6: { from: '08:00', to: '19:00' } };
-        const dayNames = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-        const now = new Date();
-        const dow = now.getDay();
-        const pill = document.getElementById('openPill');
-        const label = document.getElementById('openLabel');
-        const text = document.getElementById('todayText');
-        const hoursList = document.getElementById('hoursList');
-        const toMin = (hhmm) => { const [h, m] = hhmm.split(':').map(Number); return (h * 60) + m; };
-        const today = HOURS[dow];
-        if (today) {
-            text.textContent = `Heute: ${today.from}–${today.to}`;
-            const mins = now.getHours() * 60 + now.getMinutes();
-            const start = toMin(today.from);
-            const end = toMin(today.to);
-            if (mins >= start && mins < end) { pill.classList.remove('closed'); label.textContent = 'Jetzt geöffnet'; } else { pill.classList.add('closed'); label.textContent = 'Geschlossen'; }
-        } else { text.textContent = 'Heute: Geschlossen'; pill.classList.add('closed'); label.textContent = 'Geschlossen'; }
-        Object.keys(HOURS).forEach((d) => {
-            const li = document.createElement('li');
-            const left = document.createElement('span');
-            const right = document.createElement('span');
-            left.textContent = dayNames[d]; left.style.fontWeight = '600';
-            const spec = HOURS[d];
-            right.textContent = spec ? `${spec.from}–${spec.to}` : 'Geschlossen';
-            right.style.opacity = spec ? '0.9' : '0.6';
-            li.append(left, right);
-            if (+d === dow) { li.style.color = 'var(--brand)'; li.style.fontWeight = '700'; }
-            hoursList.appendChild(li);
-        });
-        const kayali = document.querySelector('.kayali');
-        if (kayali) {
-            const baseText = kayali.textContent;
-            kayali.addEventListener('mouseenter', () => { kayali.textContent = 'IT-Kayali.de'; });
-            kayali.addEventListener('mouseleave', () => { kayali.textContent = baseText; });
-        }
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        document.querySelectorAll('.fx-col').forEach(col => { observer.observe(col); });
-    });
-</script>
-
-<div id="as-floating-button" role="complementary" aria-label="Schnellzugriff Kontakt">
-    <a href="tel:+31548514245" class="as-float-btn as-float-call" title="Jetzt anrufen" aria-label="Jetzt anrufen"><svg
-            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-phone" aria-hidden="true">
+<!-- Floating Action Buttons (left side like example) -->
+<div class="floating-actions">
+    <a href="tel:+31548514245" class="fab-btn fab-phone" title="Anrufen">
+        <svg viewBox="0 0 24 24">
             <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-3.67-3.67A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4.18 2h3a2 2 0 0 1 2 1.72 17.6 17.6 0 0 0 .84 3.78 2 2 0 0 1-.41 2.13l-.52.52a1.8 1.8 0 0 0 0 2.54l3.96 3.96a1.8 1.8 0 0 0 2.54 0l.52-.52a2 2 0 0 1 2.13-.41 17.6 17.6 0 0 0 3.78.84 2 2 0 0 1 1.72 2z">
-            </path>
-        </svg></a>
-    <a href="#contact" class="as-float-btn as-float-contact" title="Kontaktformular öffnen"
-        aria-label="Kontaktformular öffnen"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="feather feather-mail" aria-hidden="true">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-        </svg></a>
+                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+        </svg>
+    </a>
+    <a href="mailto:info@palacegarden.nl" class="fab-btn fab-email" title="E-Mail">
+        <svg viewBox="0 0 24 24">
+            <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+        </svg>
+    </a>
 </div>
 
+<script>
+    // Dynamic opening status
+    (function () {
+        const now = new Date();
+        const day = now.getDay();
+        const hour = now.getHours();
+        const minute = now.getMinutes();
+        const currentTime = hour * 60 + minute;
 
-</body>
+        // Opening hours (Mo-Fr: 8:00-19:00, Sa: 9:00-17:00, So: closed)
+        const schedule = {
+            1: { open: 8 * 60, close: 19 * 60, label: "08:00–19:00" },
+            2: { open: 8 * 60, close: 19 * 60, label: "08:00–19:00" },
+            3: { open: 8 * 60, close: 19 * 60, label: "08:00–19:00" },
+            4: { open: 8 * 60, close: 19 * 60, label: "08:00–19:00" },
+            5: { open: 8 * 60, close: 19 * 60, label: "08:00–19:00" },
+            6: { open: 9 * 60, close: 17 * 60, label: "09:00–17:00" },
+            0: { open: 0, close: 0, label: "Geschlossen" }
+        };
 
-</html></body></html>
+        const today = schedule[day];
+        const isOpen = today && currentTime >= today.open && currentTime < today.close;
+
+        const statusDot = document.getElementById('status-dot');
+        const statusText = document.getElementById('status-text');
+        const todayHours = document.getElementById('today-hours');
+
+        if (statusDot && statusText && todayHours) {
+            if (isOpen) {
+                statusDot.classList.add('open');
+                statusText.textContent = 'Geopend';
+            } else {
+                statusDot.classList.remove('open');
+                statusText.textContent = 'Gesloten';
+            }
+            todayHours.textContent = today ? today.label : 'Gesloten';
+        }
+
+        // Highlight today in the dropdown
+        const dayToHighlight = document.querySelector(`.hours-list li[data-day="${day}"]`);
+        if (dayToHighlight) {
+            dayToHighlight.classList.add('today');
+        }
+
+        // Toggle dropdown on click
+        const dropdownContainer = document.getElementById('hours-dropdown-container');
+        const dropdownToggle = document.getElementById('hours-dropdown-toggle');
+
+        if (dropdownToggle && dropdownContainer) {
+            dropdownToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                dropdownContainer.classList.toggle('open');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!dropdownContainer.contains(e.target)) {
+                    dropdownContainer.classList.remove('open');
+                }
+            });
+        }
+    })();
+</script></body></html>
